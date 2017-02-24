@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+    
+<hibernate-mapping>
+<!-- 
+    Created by the Middlegen Hibernate plugin 2.2
+
+    http://boss.bekk.no/boss/middlegen/
+    http://www.hibernate.org/
+-->
+
+<class 
+    name="za.co.ajk.persistance.transferobjects.Security" 
+    table="security"
+    lazy="false"
+>
+
+    <id
+        name="id"
+        type="java.lang.Long"
+        column="id"
+    >
+    
+        <generator class="assigned" />
+    </id>
+
+    <property
+        name="username"
+        type="java.lang.String"
+        column="username"
+        not-null="true"
+        length="255"
+    />
+    <property
+        name="password"
+        type="java.lang.String"
+        column="password"
+        not-null="true"
+        length="255"
+    />
+
+    <!-- Associations -->
+  
+
+</class>
+</hibernate-mapping>

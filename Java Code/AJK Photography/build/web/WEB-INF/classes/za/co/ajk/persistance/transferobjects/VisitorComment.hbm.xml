@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+    
+<hibernate-mapping>
+<!-- 
+    Created by the Middlegen Hibernate plugin 2.2
+
+    http://boss.bekk.no/boss/middlegen/
+    http://www.hibernate.org/
+-->
+
+<class 
+    name="za.co.ajk.persistance.transferobjects.VisitorComment" 
+    table="visitor_comments"
+    lazy="false"
+>
+
+    <id
+        name="commentId"
+        type="java.lang.Long"
+        column="comment_id"
+    >
+		    <meta attribute="field-description" inherit="false">
+		       auto_increment
+		    </meta>
+    
+        <generator class="native" />
+    </id>
+    
+    <property
+        name="commentText"
+        type="java.lang.String"
+        column="comment_text"
+        not-null="true"
+        length="1024"
+    />
+    <property
+        name="published"
+        type="java.lang.String"
+        column="published"
+        not-null="true"
+        length="1"
+    />
+    <property
+        name="dateSubmitted"
+        type="java.sql.Timestamp"
+        column="date_submitted"
+        length="19"
+    />
+    <!-- Associations -->
+  
+    <!-- bi-directional many-to-one association to Visitor -->
+    <many-to-one
+        name="visitor"
+        class="za.co.ajk.persistance.transferobjects.Visitor"
+        not-null="true"
+    >
+        <column name="visitor_id" />
+    </many-to-one>
+
+</class>
+</hibernate-mapping>

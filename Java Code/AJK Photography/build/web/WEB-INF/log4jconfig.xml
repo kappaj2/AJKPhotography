@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration>
+ <!--
+  The following appenders are defined to be used by loggers
+  1. The console appender can be used to assign message to the System.out.println 
+  2. For each of the warning levels we have their own appender with file format, etc.
+     Filters filter messages down to the correct level.
+  3. Rolling file appenders are used so we have a new logfile every day.
+  
+     NOTE: This loggin framework requires a ServletContextListener to initialize the
+           Log4J environment by reading this config file.
+           Due to 9.0.3 and no Standalone JMS implementation, code is commented that
+           uses the JMS MDB developed and tested sucessfully on 10G.
+ -->
+ <appender name="consoleAppender" class="org.apache.log4j.ConsoleAppender">
+   <param name="Threshold" value="ALL"/>
+  <layout class="org.apache.log4j.PatternLayout">
+     <param name="ConversionPattern"
+            value="%d %-3p [%t] %c{2} %l - %m%n"/>
+   </layout>
+ <!-- 
+    This SimpleLayout only includes the date/time and message. No class information is part of the debug detail.
+    <layout class="org.apache.log4j.SimpleLayout"/>
+    -->
+ </appender>
+ 
+
+ <appender name="FileAppender" class="org.apache.log4j.DailyRollingFileAppender">
+   <param name="File" value="../logs/dailyDebugLog.log"/>
+   <param name="Threshold" value="DEBUG"/>
+   <layout class="org.apache.log4j.PatternLayout">
+     <param name="ConversionPattern"
+            value="%d %-5p [%t] %l - %m%n"/>
+   </layout>
+   <filter class="org.apache.log4j.varia.LevelMatchFilter">
+     <param name="LevelToMatch" value="debug"/>
+     <param name="AcceptOnMatch" value="true"/>
+   </filter>
+   <filter class="org.apache.log4j.varia.DenyAllFilter"/>
+ </appender>
+
+  
+ <logger name="za.co.ajk" additivity="false">
+   <level value="DEBUG"/>
+   <appender-ref ref="FileAppender"/>
+ </logger>
+
+  <logger name="com" additivity="false">
+   <level value="ERROR"/>
+   <appender-ref ref="FileAppender"/>
+ </logger>
+ 
+   <logger name="org.hibernate" additivity="false">
+   <level value="ERROR"/>
+   <appender-ref ref="FileAppender"/>
+ </logger>
+ 
+ <root>
+   <priority value="ERROR"/>
+   <appender-ref ref="consoleAppender"/>
+ </root>
+</log4j:configuration>

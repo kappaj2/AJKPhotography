@@ -1,0 +1,8 @@
+Hi Andre
+Use a FTP Client like FileZilla, CuteFTP etc then login with detail
+Host: ftp.ajkphotography.co.za 
+Username: ajkphotographyTClogs
+Password: admin
+It will take you straight to the Tomcat5 Logs This is what they can do
+without giving you root access to the server.
+Ettienne 

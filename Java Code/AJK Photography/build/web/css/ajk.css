@@ -1,0 +1,317 @@
+body {
+   font-family: Arial, Helvetica, sans-serif;
+   background-color: #000000;
+   font-size: larger;
+	   
+}
+
+a { 
+   font-size: 70%;
+   color: #6495ED; /* same colour as banner text  */
+   text-decoration: underline;
+   cursor:pointer;
+}
+	
+a:hover {
+   font-size: 70%;
+   color: #6495ED; /* same colour as banner text  */
+}
+	
+a:visited {
+   font-size: 70%;
+   color: #6495ED; /* same colour as banner text  */
+}
+	
+.a1 { 
+   font-size: 70%;
+   color: #6495ED; /* same colour as banner text  */
+   text-decoration: underline;
+   cursor:pointer;
+}
+	
+.a1:hover {
+   font-size: 70%;
+   color: #6495ED; /* same colour as banner text  */
+}
+	
+.a1:visited {
+   font-size: 70%;
+   color: #6495ED; /* same colour as banner text  */
+}
+
+h1 {
+   color: #6495ED;
+   font-size: 140%;
+   text-align: center;
+   padding: 1px;
+}
+
+th1 {
+   color: #6495ED;
+   font-size: 120%;
+   text-align: center;
+}
+
+th2 {
+   color: #6495ED;
+   font-size: 100%;
+   text-align: center;
+}
+
+.tr1{
+	 border: thin solid #00008B;
+	
+}
+
+.applogo{
+   color: #6495ED;
+   font-size: 120%;
+   text-align: center;
+   white-space: normal;
+   height: 100px;
+}
+
+.headertext{
+   color: #0000ff;
+   font-family: "Bradley Hand ITC";
+   font-size: 360%;
+   font-style: italic;
+   font-weight: bolder;
+   text-align: center;
+   white-space: normal;
+}
+
+.tderror {
+   color: red;
+   font-size: 100%;
+   text-align: center;
+   margin-bottom: 0;
+   padding: 1px;
+}
+
+/*	Hierdie is die table properties vir master layout page!! */
+.TableMaster{
+   margin: 0px;
+      border: thin solid #00008B;
+   padding: 2px;
+   text-indent: 2px;
+   font-family: Arial, Helvetica, sans-serif;
+   border: thin;
+	
+}
+
+.breadcrumbs{
+   color: #6495ED;
+   font-size: 100%;
+   font-weight: normal;
+   font-family: Arial, Helvetica, sans-serif;
+}
+
+
+/*	Hierdie is die table properties vir verskillende packages bladsy */
+.TablePackages{
+   color: #6495ED;
+   font-size: 100%;
+   font-weight: normal;
+   text-align: center;
+   margin: 0px;
+   border: thin solid #00008B;
+   padding: 0px;
+   text-indent: 6px;
+   font-family: Arial, Helvetica, sans-serif;
+}
+
+/*	Hierdie is die table properties vir verskillende packages bladsy */
+.TableCategories{
+   color: #6495ED;
+   font-size: 100%;
+   font-weight: normal;
+   text-align: center;
+   margin: 0px;
+   border: thin solid #00008B;
+   padding: 0px;
+   text-indent: 6px;
+   font-family: Arial, Helvetica, sans-serif;
+}
+
+/*	Hierdie is die table properties vir verskillende packages bladsy */
+.TableCategoriesDetail{
+   color: #6495ED;
+   font-size: 100%;
+   font-weight: normal;
+   text-align: center;
+   margin: 0px;
+   padding: 0px;
+   text-indent: 6px;
+   font-family: Arial, Helvetica, sans-serif;
+}
+
+/*	Hierdie is die table properties vir verskillende galleries bladsy */
+.TableGalleries{
+   color: #6495ED;
+   font-size: 100%;
+   font-weight: normal;
+   text-align: center;
+   margin: 0px;
+   border: thin solid #00008B;
+   padding: 0px;
+   text-indent: 6px;
+   font-family: Arial, Helvetica, sans-serif;
+}
+
+/*	Hierdie is die table properties vir verskillende galleries bladsy */
+.TableGalleriesDetail{
+   color: #6495ED;
+   font-size: 100%;
+   font-weight: normal;
+   text-align: center;
+   margin: 0px;
+   padding: 0px;
+   text-indent: 6px;
+   font-family: Arial, Helvetica, sans-serif;
+}
+
+/*	Hierdie is die table properties vir verskillende galleries bladsy */
+.TableImages{
+   color: #6495ED;
+   font-size: 100%;
+   font-weight: normal;
+   text-align: center;
+   margin: 0px;
+   border: thin solid #00008B;
+   padding: 0px;
+   text-indent: 6px;
+   font-family: Arial, Helvetica, sans-serif;
+}
+
+/*	Hierdie is die table properties vir verskillende galleries bladsy */
+.TableImagesDetail{
+   color: #6495ED;
+   font-size: 100%;
+   font-weight: normal;
+   text-align: center;
+   margin: 0px;
+   padding: 0px;
+   text-indent: 6px;
+   font-family: Arial, Helvetica, sans-serif;
+}
+
+/*	Hierdie is die table properties vir verskillende galleries bladsy */
+.TableImagesBig{
+   color: #6495ED;
+   font-size: 100%;
+   font-weight: normal;
+   text-align: center;
+   margin: 0px;
+   padding: 0px;
+   text-indent: 6px;
+   font-family: Arial, Helvetica, sans-serif;
+	   border: thin solid #00008B;
+}
+
+/*	Hierdie is die table properties vir verskillende packages bladsy */
+.TableAbout{
+   color: #6495ED;
+   font-size: 100%;
+   font-weight: normal;
+   text-align: center;
+   margin: 0px;
+   border: thin solid #00008B;
+   padding: 0px;
+   text-indent: 6px;
+   font-family: Arial, Helvetica, sans-serif;
+}
+
+
+
+/*	Hierdie is die table properties vir verskillende packages bladsy */
+.TableCaptcha{
+   color: #6495ED;
+   font-size: 100%;
+   font-weight: normal;
+   text-align: center;
+   margin: 0px;
+   border: thin solid #00008B;
+   padding: 0px;
+   text-indent: 6px;
+   font-family: Arial, Helvetica, sans-serif;
+}
+
+/*	This is the table properties for the links page */
+.TableLinks{
+   color: #6495ED;
+   font-size: 100%;
+   font-weight: normal;
+   text-align: center;
+   margin: 0px;
+   border: thin solid #00008B;
+   padding: 0px;
+   text-indent: 6px;
+   font-family: Arial, Helvetica, sans-serif;
+}
+
+/*	Hierdie is die table properties vir maintenance bladsye */
+.TableFeedback{
+   color: #6495ED;
+   font-size: 100%;
+   font-weight: normal;
+   text-align: center;
+   margin: 0px;
+   border-width: thin thin thin thin;
+   padding: 0px;
+   font-family: Arial, Helvetica, sans-serif;
+   border: thin solid #00008B;
+	
+}
+
+
+/*	Hierdie is die table properties vir maintenance bladsye */
+.TableMaintenance{
+   color: #6495ED;
+   font-size: 100%;
+   font-weight: normal;
+   text-align: center;
+   margin: 0px;
+   padding: 5px;
+   text-indent: 5px;
+   font-family: Arial, Helvetica, sans-serif;
+   border: thin solid #00008B;
+}
+
+/*	Hierdie is die table properties vir maintenance bladsye */
+.TableMaintenanceDetail{
+   color: #6495ED;
+   font-size: 100%;
+   font-weight: normal;
+   text-align: center;
+   margin: 0px;
+   padding: 5px;
+   text-indent: 5px;
+   font-family: Arial, Helvetica, sans-serif;
+}
+
+/*	Hierdie is die table properties vir maintenance bladsye */
+.TableError{
+   color: Red;
+   font-size: 100%;
+   font-weight: normal;
+   text-align: center;
+   margin: 0px;
+   border: thin solid #00008B;
+   padding: 0px;
+   text-indent: 6px;
+   font-family: Arial, Helvetica, sans-serif;
+}
+
+/*	Hierdie is die table properties vir information bladsye */
+.TableInfo{
+   color: #6495ED;
+   font-size: 100%;
+   font-weight: normal;
+   text-align: center;
+   margin: 0px;
+    border: thin solid #00008B;
+   padding: 0px;
+   text-indent: 6px;
+   font-family: Arial, Helvetica, sans-serif;
+}

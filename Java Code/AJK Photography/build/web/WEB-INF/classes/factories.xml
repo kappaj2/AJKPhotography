@@ -1,0 +1,62 @@
+<factories>
+    
+    <factory name="hibernate" 
+             class="za.co.ajk.persistance.hibernate.dao.factory.HibernateDAOFactory" 
+             failSafe="false">
+        
+        <dao class="za.co.ajk.persistance.daos.ImageCategoryDAO" 
+             name="ImageCategoryDAO">
+            <dto class="za.co.ajk.persistance.transferobjects.ImageCategory" 
+                 name="ImageCategory"/>
+        </dao>
+        
+        <dao class="za.co.ajk.persistance.daos.ImageGalleryDAO" 
+             name="ImageGalleryDAO">
+            <dto class="za.co.ajk.persistance.transferobjects.ImageGallery" 
+                 name="ImageGallery"/>
+        </dao>
+  
+        <dao class="za.co.ajk.persistance.daos.ImageDAO" 
+             name="ImageDAO">
+            <dto class="za.co.ajk.persistance.transferobjects.Image" 
+                 name="Image"/>
+        </dao>
+        
+        <dao class="za.co.ajk.persistance.daos.PackageDAO" 
+             name="PackageDAO">
+            <dto class="za.co.ajk.persistance.transferobjects.Packages" 
+                 name="Packages"/>
+        </dao>
+        
+        <dao class="za.co.ajk.persistance.daos.VisitorDAO" 
+             name="VisitorDAO">
+            <dto class="za.co.ajk.persistance.transferobjects.Visitor" 
+                 name="Visitor"/>
+        </dao>        
+      
+        <dao class="za.co.ajk.persistance.daos.VisitorCommentDAO" 
+             name="VisitorCommentDAO">
+            <dto class="za.co.ajk.persistance.transferobjects.VisitorComment" 
+                 name="VisitorComment"/>
+        </dao>  
+     
+        <dao class="za.co.ajk.persistance.daos.AboutDAO" 
+             name="AboutDAO">
+            <dto class="za.co.ajk.persistance.transferobjects.About" 
+                 name="About"/>
+        </dao>  
+        
+        <dao class="za.co.ajk.persistance.daos.AppPropDAO" 
+             name="AppPropDAO">
+            <dto class="za.co.ajk.persistance.transferobjects.AppProp" 
+                 name="AppProp"/>
+        </dao>  
+        
+        <dao class="za.co.ajk.persistance.daos.SecurityDAO" 
+             name="SecurityDAO">
+            <dto class="za.co.ajk.persistance.transferobjects.Security" 
+                 name="Security"/>
+        </dao>  
+        
+    </factory>
+</factories>

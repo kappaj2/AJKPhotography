@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE tiles-definitions PUBLIC
+"-//Apache Software Foundation//DTD Tiles Configuration 1.1//EN"
+"http://jakarta.apache.org/struts/dtds/tiles-config_1_1.dtd">
+
+<!--
+     This definition defines the page layouts used for the AJK photography website
+-->
+
+<tiles-definitions>
+    
+    <!-- Define master layout for normal visitors -->
+    
+    <definition name=".mainLayout"      path="/WEB-INF/layouts/masterLayout.jsp">
+        <put name="title"               value="AJK Photography" />
+        <put name="headerTile"          value="/WEB-INF/layouts/empty.jsp" />
+        <put name="bodyTile"            value="/WEB-INF/layouts/empty.jsp" />
+        <put name="packagesTile"        value="/WEB-INF/layouts/empty.jsp" />        
+        <put name="aboutMeTile"         value="/WEB-INF/layouts/empty.jsp" />
+        <put name="linksTile"           value="/WEB-INF/layouts/empty.jsp" />
+    </definition>
+    
+    <!-- extend master layout to show all logo's, categories and links -->
+    <definition name=".showHomePage"    extends=".mainLayout">
+        <put name="headerTile"          value="/WEB-INF/dynamicpages/headerblock.jsp" />
+        <put name="bodyTile"            value="/WEB-INF/dynamicpages/categories.jsp"/>
+        <put name="packagesTile"        value="/WEB-INF/dynamicpages/packages.jsp" />   
+        <put name="aboutMeTile"         value="/WEB-INF/dynamicpages/about.jsp" />        
+        <put name="linksTile"           value="/WEB-INF/dynamicpages/links.jsp"/>
+    </definition>
+    
+    
+    <!-- Define layout to show a category with all the galleries in that category -->
+    <definition name=".galleryLayout"   path="/WEB-INF/layouts/galleriesLayout.jsp">
+        <put name="title"               value="AJK Photography" />        
+        <put name="headerTile"          value="/WEB-INF/dynamicpages/headerblock.jsp" />
+        <put name="bodyTile"            value="/WEB-INF/layouts/empty.jsp" />
+    </definition>    
+    
+    
+    <!-- extend master layout to show all logo's, galleries and links for a category -->
+    <definition name=".showCategoryGalleries"  extends=".galleryLayout">
+        <put name="headerTile"         value="/WEB-INF/dynamicpages/headerblock.jsp" />
+        <put name="bodyTile"           value="/WEB-INF/dynamicpages/gallery.jsp"/>
+    </definition>
+    <!-- extend master layout to show all logo's, galleries and links for a category -->
+    <definition name=".showGalleryImages"  extends=".galleryLayout">
+        <put name="headerTile"         value="/WEB-INF/dynamicpages/headerblock.jsp" />
+        <put name="bodyTile"           value="/WEB-INF/dynamicpages/images.jsp"/>
+    </definition>
+    <!-- extend master layout to show all logo's, galleries and links for a category -->
+    <definition name=".showGalleryImageBig"  extends=".galleryLayout">
+        <put name="headerTile"         value="/WEB-INF/dynamicpages/headerblock.jsp" />
+        <put name="bodyTile"           value="/WEB-INF/dynamicpages/imagesBig.jsp"/>
+    </definition>    
+    
+    
+    <!-- Define layout to show the header, categories and then the relevant text  -->
+    <definition name=".detailTextLayout"   path="/WEB-INF/layouts/textRelatedLayout.jsp">
+        <put name="title"               value="AJK Photography" />        
+        <put name="headerTile"          value="/WEB-INF/dynamicpages/headerblock.jsp" />
+        <put name="bodyTile"            value="/WEB-INF/layouts/empty.jsp" />
+        <put name="textTile"            value="/WEB-INF/layouts/empty.jsp" />
+    </definition>  
+    
+    <!-- extend master layout to show all logo's, galleries and links for a category -->
+    <definition name=".showPackageDetail"  extends=".detailTextLayout">
+        <put name="headerTile"         value="/WEB-INF/dynamicpages/headerblock.jsp" />
+        <put name="bodyTile"            value="/WEB-INF/dynamicpages/categories.jsp"/>      
+        <put name="textTile"           value="/WEB-INF/dynamicpages/displayPackageDetail.jsp"/>
+    </definition>    
+    
+    <!-- extend master layout to show all logo's, galleries and links for a category -->
+    <definition name=".showFeedback"    extends=".detailTextLayout">
+        <put name="headerTile"         value="/WEB-INF/dynamicpages/headerblock.jsp" />           
+        <put name="bodyTile"            value="/WEB-INF/dynamicpages/categories.jsp"/>      
+        <put name="textTile"           value="/WEB-INF/dynamicpages/feedback.jsp"/>
+    </definition>     
+    <definition name=".showFeedbackThankyou"    extends=".detailTextLayout">
+        <put name="headerTile"         value="/WEB-INF/dynamicpages/headerblock.jsp" />           
+        <put name="bodyTile"            value="/WEB-INF/dynamicpages/categories.jsp"/>      
+        <put name="textTile"           value="/WEB-INF/dynamicpages/feedbackThankyou.jsp"/>
+    </definition>      
+    <definition name=".showApprovedFeedback"    extends=".detailTextLayout">
+        <put name="headerTile"         value="/WEB-INF/dynamicpages/headerblock.jsp" />           
+        <put name="bodyTile"            value="/WEB-INF/dynamicpages/categories.jsp"/>      
+        <put name="textTile"           value="/WEB-INF/dynamicpages/feedbackList.jsp"/>
+    </definition> 
+    
+    
+    <!-- ============================================================================
+	This is the start of the maintenance page layouts
+	================================================================================ -->				
+    
+    <definition name="maintenanceLayout" path="/WEB-INF/layouts/maintenanceLayout.jsp">
+        <put name="title"  			value="AJK Photography"/>
+        <put name="headerTile"		value="/WEB-INF/maintenancepages/header.jsp"/>
+        <put name="maintMenuTile"	value="/WEB-INF/maintenancepages/maintMenu.jsp"/>
+        <put name="maintBodyTile"	value="/WEB-INF/maintenancepages/maintBody.jsp"/>
+    </definition>
+    
+    <!-- Extensions of the base maintenanceLayoutDef tile -  main layout for the maintenance pages -->
+    <definition name=".maintenancePage" extends="maintenanceLayout">
+    </definition>
+    
+    
+    
+    <!-- Extensions of the base maintenanceLayoutDef tile - Category maintenace-->
+    <definition name=".categoryList" extends="maintenanceLayout">
+        <put name="maintBodyTile"	value="/WEB-INF/maintenancepages/categoryList.jsp"/>
+    </definition>
+    <definition name=".categoryAdd" extends="maintenanceLayout">
+        <put name="maintBodyTile"	value="/WEB-INF/maintenancepages/categoryAdd.jsp"/>
+    </definition>
+    <definition name=".categoryEdit" extends="maintenanceLayout">
+        <put name="maintBodyTile"	value="/WEB-INF/maintenancepages/categoryEdit.jsp"/>
+    </definition>    
+    
+    <!-- Extensions of the base maintenanceLayoutDef tile - Gallery maintenace-->
+    <definition name=".galleryList" extends="maintenanceLayout">
+        <put name="maintBodyTile"	value="/WEB-INF/maintenancepages/galleryList.jsp"/>
+    </definition>
+    <definition name=".galleryAdd" extends="maintenanceLayout">
+        <put name="maintBodyTile"	value="/WEB-INF/maintenancepages/galleryAdd.jsp"/>
+    </definition>    
+    <definition name=".galleryEdit" extends="maintenanceLayout">
+        <put name="maintBodyTile"	value="/WEB-INF/maintenancepages/galleryEdit.jsp"/>
+    </definition>    
+    
+    <!-- Extensions of the base maintenanceLayoutDef tile - Image maintenace-->    
+    <definition name=".imageLookup" extends="maintenanceLayout">
+        <put name="maintBodyTile"	value="/WEB-INF/maintenancepages/imageLookupAJX.jsp"/>
+    </definition>  
+    <definition name=".imageList" extends="maintenanceLayout">
+        <put name="maintBodyTile"	value="/WEB-INF/maintenancepages/imageList.jsp"/>
+    </definition>      
+    <definition name=".imageAdd" extends="maintenanceLayout">
+        <put name="maintBodyTile"	value="/WEB-INF/maintenancepages/imageAdd.jsp"/>
+    </definition>    
+    <definition name=".imageEdit" extends="maintenanceLayout">
+        <put name="maintBodyTile"	value="/WEB-INF/maintenancepages/imageEdit.jsp"/>
+    </definition> 
+    
+    <!-- Package maintenance screens -->
+    <definition name=".showPackageAdd" extends="maintenanceLayout">
+        <put name="maintBodyTile"	value="/WEB-INF/maintenancepages/packagesAdd.jsp"/>
+    </definition>     
+    <definition name=".showPackageList" extends="maintenanceLayout">
+        <put name="maintBodyTile"	value="/WEB-INF/maintenancepages/packagesList.jsp"/>
+    </definition>       
+    <definition name=".showPackageEdit" extends="maintenanceLayout">
+        <put name="maintBodyTile"	value="/WEB-INF/maintenancepages/packagesEdit.jsp"/>
+    </definition>  
+    
+  
+    <!-- Feedback maintenance screens -->
+    <definition name=".showPendingFeedback" extends="maintenanceLayout">
+        <put name="maintBodyTile"	value="/WEB-INF/maintenancepages/visitorCommentList.jsp"/>
+    </definition>  
+    <definition name=".showVisitors" extends="maintenanceLayout">
+        <put name="maintBodyTile"	value="/WEB-INF/maintenancepages/visitorList.jsp"/>
+    </definition>     
+    
+    <!-- About maintenance screens -->
+    <definition name=".showEditUpdateAbout" extends="maintenanceLayout">
+        <put name="maintBodyTile"	value="/WEB-INF/maintenancepages/showEditUpdateAbout.jsp"/>
+    </definition>      
+    
+    <!-- Configuration maintenance screens -->
+    <definition name=".showConfigurationAndSetup" extends="maintenanceLayout">
+        <put name="maintBodyTile"	value="/WEB-INF/maintenancepages/showConfigurationAndSetup.jsp"/>
+    </definition>  
+    <definition name=".showAddStylesheet" extends="maintenanceLayout">
+        <put name="maintBodyTile"	value="/WEB-INF/maintenancepages/addStylesheet.jsp"/>
+    </definition>  
+    <definition name=".displayPropList" extends="maintenanceLayout">
+        <put name="maintBodyTile"	value="/WEB-INF/maintenancepages/displayPropList.jsp"/>
+    </definition>     
+    <definition name=".displayPropEdit" extends="maintenanceLayout">
+        <put name="maintBodyTile"	value="/WEB-INF/maintenancepages/displayPropEdit.jsp"/>
+    </definition>     
+    
+    
+</tiles-definitions>

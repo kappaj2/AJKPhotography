@@ -1,0 +1,78 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+    
+<hibernate-mapping>
+<!-- 
+    Created by the Middlegen Hibernate plugin 2.2
+
+    http://boss.bekk.no/boss/middlegen/
+    http://www.hibernate.org/
+-->
+
+<class 
+    name="za.co.ajk.persistance.transferobjects.Image" 
+    table="images"
+    lazy="false"
+>
+
+    <composite-id name="comp_id" class="za.co.ajk.persistance.transferobjects.ImagePK">
+        <key-property 
+            name="imageCode" 
+            column="image_code" 
+            type="java.lang.Long"
+            length="20"
+        />
+        <key-property 
+            name="categoryCode" 
+            column="category_code" 
+            type="java.lang.Long"
+            length="20"
+        />
+        <key-property 
+            name="galleryCode" 
+            column="gallery_code" 
+            type="java.lang.Long"
+            length="20"
+        />
+    </composite-id>    
+
+    <property
+        name="imageData"
+        type="binary"
+        column="image_data"
+        length="2147483647"
+    />
+    <property
+        name="imageUrl"
+        type="java.lang.String"
+        column="image_url"
+        not-null="true"
+        length="255"
+    />
+    <property
+        name="imageDescription"
+        type="java.lang.String"
+        column="image_description"
+        length="1024"
+    />
+
+    <!-- Associations -->
+    <!-- derived association(s) for compound key -->
+    <!-- bi-directional many-to-one association to ImageGallery -->
+    <many-to-one
+        name="imageGallery"
+	    class="za.co.ajk.persistance.transferobjects.ImageGallery"
+	    update="false"
+	    insert="false"
+	>
+    	<column name="category_code" />
+    	<column name="gallery_code" />
+	</many-to-one>
+	
+    <!-- end of derived association(s) -->
+  
+
+</class>
+</hibernate-mapping>

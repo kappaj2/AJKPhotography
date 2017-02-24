@@ -1,0 +1,74 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+    
+<hibernate-mapping>
+<!-- 
+    Created by the Middlegen Hibernate plugin 2.2
+
+    http://boss.bekk.no/boss/middlegen/
+    http://www.hibernate.org/
+-->
+
+<class 
+    name="za.co.ajk.persistance.transferobjects.ImageCategory" 
+    table="image_categories"
+    lazy="false"
+>
+
+    <id
+        name="categoryCode"
+        type="java.lang.Long"
+        column="category_code"
+    >
+		    <meta attribute="field-description" inherit="false">
+		       auto_increment
+		    </meta>
+    
+        <generator class="native" />
+    </id>
+
+    <property
+        name="categoryDescription"
+        type="java.lang.String"
+        column="category_description"
+        not-null="true"
+        length="255"
+    />
+    <property
+        name="categoryImageUrl"
+        type="java.lang.String"
+        column="category_image_url"
+        not-null="false"
+        length="255"
+    />    
+    <property
+        name="categoryImage"
+        type="binary"
+        column="category_image"
+        length="2147483647"
+    />
+
+    <!-- Associations -->
+  
+    <!-- bi-directional one-to-many association to ImageGallery -->
+
+    <set
+        name="imageGalleries"
+        lazy="true"
+        inverse="true"
+		cascade="all"
+
+    >
+        <key>
+            <column name="category_code" />
+        </key>
+        
+        <one-to-many 
+            class="za.co.ajk.persistance.transferobjects.ImageGallery"
+        />
+    </set>
+
+</class>
+</hibernate-mapping>

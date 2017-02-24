@@ -1,0 +1,89 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+    
+<hibernate-mapping>
+<!-- 
+    Created by the Middlegen Hibernate plugin 2.2
+
+    http://boss.bekk.no/boss/middlegen/
+    http://www.hibernate.org/
+-->
+
+<class 
+    name="za.co.ajk.persistance.transferobjects.ImageGallery" 
+    table="image_galleries"
+    lazy="false"
+>
+
+    <composite-id name="comp_id" class="za.co.ajk.persistance.transferobjects.ImageGalleryPK">
+        <key-property 
+            name="categoryCode" 
+            column="category_code" 
+            type="java.lang.Long"
+            length="20"
+        />        
+        <key-property 
+            name="galleryCode" 
+            column="gallery_code" 
+            type="java.lang.Long"
+            length="20"
+        />
+
+    </composite-id>    
+    <property
+        name="galleryImageUrl"
+        type="java.lang.String"
+        column="gallery_image_url"
+        not-null="false"
+        length="255"
+    />
+    <property
+        name="galleryDescription"
+        type="java.lang.String"
+        column="gallery_description"
+        not-null="true"
+        length="255"
+    />
+    <property
+        name="galleryImage"
+        type="binary"
+        column="gallery_image"
+        length="2147483647"
+    />
+    <!-- Associations -->
+    <!-- derived association(s) for compound key -->
+    <!-- bi-directional many-to-one association to ImageCategory -->
+    <many-to-one
+        name="imageCategory"
+	    class="za.co.ajk.persistance.transferobjects.ImageCategory"
+	    update="false"
+	    insert="false"
+	>
+    	<column name="category_code" />
+	</many-to-one>
+	
+    <!-- end of derived association(s) -->
+  
+    <!-- bi-directional one-to-many association to Image -->
+
+    <set
+        name="images"
+        lazy="true"
+        inverse="true"
+		cascade="all"
+
+    >
+        <key>
+            <column name="category_code" />
+            <column name="gallery_code" />
+        </key>
+        
+        <one-to-many 
+            class="za.co.ajk.persistance.transferobjects.Image"
+        />
+    </set>
+
+</class>
+</hibernate-mapping>

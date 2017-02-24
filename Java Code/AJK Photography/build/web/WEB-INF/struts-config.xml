@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE struts-config PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 1.2//EN"
+"http://jakarta.apache.org/struts/dtds/struts-config_1_2.dtd">
+
+
+<struts-config>
+    
+    <form-beans>
+        
+        <form-bean name="imageCategoryForm"
+                   type="za.co.ajk.struts.forms.ImageCategoryForm"/>  
+        
+        <form-bean name="imageGalleryForm"
+                   type="za.co.ajk.struts.forms.ImageGalleryForm"/>  
+        
+        <form-bean name="imageForm"
+                   type="za.co.ajk.struts.forms.ImageForm"/>  
+        
+        <form-bean name="packageForm"
+                   type="za.co.ajk.struts.forms.PackageForm"/>  
+        
+        <form-bean name="feedbackForm"
+                   type="za.co.ajk.struts.forms.FeedbackForm"/>                     
+        
+        <form-bean name="feedbackMaintenanceForm"
+                   type="za.co.ajk.struts.forms.FeedbackMaintenanceForm"/>     
+        
+        <form-bean name="aboutForm"
+                   type="za.co.ajk.struts.forms.AboutForm"/>   
+        
+        <form-bean name="codeLookupForm"
+                   type="za.co.ajk.struts.forms.CodeLookupForm"/>  
+        
+        <form-bean name="configurationAndSetupForm"
+                   type="za.co.ajk.struts.forms.ConfigurationAndSetupForm"/>  
+        
+        <form-bean       name="LogonForm"
+                         type="org.apache.struts.validator.DynaValidatorForm">
+            <form-property name="username" type="java.lang.String"/>
+            <form-property name="password" type="java.lang.String"/>
+        </form-bean>
+        
+        
+        
+    </form-beans>
+    
+    <global-exceptions>
+        
+        <exception key="error.general" 
+                   type="java.lang.Exception"
+                   path="/pages/error.jsp" />
+        
+    </global-exceptions>
+    
+    <global-forwards>
+        <forward name="ajk" path="/css/ajk.css" />        
+        <forward name="welcome"  path="/homePage.do"/>
+    </global-forwards>
+    
+    <action-mappings>
+        
+        <!--  These two actions are the ones used for sorting, etc by Struts -->
+        <action path="/sort"
+                type="fr.improve.struts.taglib.layout.sort.SortAction" />
+        
+        <action path="/treeview"
+                type="fr.improve.struts.taglib.layout.treeview.TreeViewAction" />
+        
+        <!-- 
+            Default homepage action 
+            The form used for this action will populate the list of images.
+            There will be a collection for the categories. Once you select a category, there will be a new list for the 
+            gallery.
+        -->         
+        
+        <action path="/homePage" 
+                type="za.co.ajk.struts.actions.HomePageAction" 
+                validate="false" 
+                parameter="exec"                 
+                scope="session"
+        >     
+            <forward name="homePage"                path=".showHomePage"/>
+        </action>
+        
+        <action path="/feedbackAction" 
+                type="za.co.ajk.struts.actions.FeedbackAction" 
+                validate="true" 
+                parameter="exec" 
+                input=".showFeedback"
+                scope="request"
+                name="feedbackForm">     
+            <forward name="showFeedback"                path=".showFeedback"/>
+            <forward name="showApprovedFeedback"            path=".showApprovedFeedback"/>
+            <forward name="showFeedbackThankyou"        path=".showFeedbackThankyou"/>            
+        </action>
+        
+        
+        <!-- Define action that will handle all the different packages and their required actions -->
+        <action path="/packageAction" 
+                type="za.co.ajk.struts.actions.PackageAction" 
+                validate="false"
+                parameter="exec"
+                scope="session"
+                name="packageForm">     
+            <forward name="showPackages"                path=".showPackages"/>
+            <forward name="showPackageDetail"           path=".showPackageDetail"/>
+        </action>          
+        
+        <!-- Define action that will handle all the image display requests -->
+        <action path="/imageAction" 
+                type="za.co.ajk.struts.actions.ImageAction" 
+                validate="false"
+                scope="session"
+                parameter="exec"
+                name="imageForm">     
+            <forward name="homePage"                path=".showHomePage"/>
+            <forward name="showCategoryGalleries"   path=".showCategoryGalleries"/>
+            <forward name="showGalleryImages"       path=".showGalleryImages"/>
+            <forward name="showGalleryImageBig"     path=".showGalleryImageBig"/>
+        </action>  
+        
+        <action path="/aboutAction" 
+                type="za.co.ajk.struts.actions.maintenance.AboutMaintenanceAction" 
+                validate="false" 
+                parameter="exec" 
+                scope="session"
+                name="aboutForm">     
+            <forward name="showEditUpdateAbout"             path=".showEditUpdateAbout"/>
+        </action> 
+        
+        <!--                                                        -->        
+        <!--   Maintenance section                                  -->
+        <!--                                                        -->        
+
+        
+        <!-- Default maintenance page action -->         
+        
+        <action path="/SubmitLogon" 
+                type="za.co.ajk.struts.actions.maintenance.SubmitLogonAction" 
+                validate="true" 
+                input="/logon.jsp"
+                name="LogonForm"
+                parameter="exec"
+                scope="request">     
+            <forward name="success"                path="/admin/maintenancePage.do?exec=showMaintenanceScreens"/>
+        </action>
+        
+        <action path="/admin/Administration"
+                forward="/admin/maintenancePage.do?exec=showMaintenanceScreens"/>
+        
+        <action path="/admin/maintenancePage" 
+                type="za.co.ajk.struts.actions.MaintenanceAction" 
+                validate="false"   
+                parameter="exec" 
+                scope="request">     
+            <forward name="maintenancePage"                path=".maintenancePage"/>
+        </action>        
+        
+        <action path="/admin/categoryMaintenanceAction" 
+                type="za.co.ajk.struts.actions.maintenance.CategoryMaintenanceAction" 
+                validate="false" 
+                parameter="exec"                 
+                scope="request" 
+                name="imageCategoryForm">     
+            <forward name="showAllCategories"               path=".categoryList"/>
+            <forward name="addCategory"                     path=".categoryAdd"/>            
+            <forward name="displayImageCategoryUpdate"      path=".categoryEdit"/>    
+        </action>
+        
+        <action path="/admin/galleryMaintenanceAction" 
+                type="za.co.ajk.struts.actions.maintenance.GalleryMaintenanceAction" 
+                validate="false" 
+                parameter="exec"                 
+                scope="request"
+                name="imageGalleryForm">     
+            <forward name="showAllGalleries"                path=".galleryList"/>
+            <forward name="addGallery"                      path=".galleryAdd"/>  
+            <forward name="editGallery"                     path=".galleryEdit"/>  
+            
+            
+        </action>
+        
+        <action path="/admin/imageMaintenanceAction" 
+                type="za.co.ajk.struts.actions.maintenance.ImageMaintenanceAction" 
+                validate="true" 
+                parameter="exec"                 
+                scope="request"
+                input=".imageAdd"
+                name="imageForm">     
+            <forward name="galleryImageLookup"              path=".imageLookup"/>    
+            <forward name="imageList"                       path=".imageList"/>    
+            <forward name="imageAdd"                        path=".imageAdd"/> 
+            <forward name="imageEdit"                       path=".imageEdit"/>  
+        </action>
+        
+        
+        <!-- Define action that will handle all the different packages and their required actions -->
+        <action path="/admin/packageMaintenanceAction" 
+                type="za.co.ajk.struts.actions.maintenance.PackageMaintenanceAction" 
+                validate="false"
+                parameter="exec"
+                scope="request"
+                name="packageForm">     
+            <forward name="showPackageList"                path=".showPackageList"/>
+            <forward name="showPackageEdit"                path=".showPackageEdit"/>
+            <forward name="showPackageAdd"                 path=".showPackageAdd"/>
+        </action>      
+        
+        <action path="/admin/feedbackMaintenanceAction" 
+                type="za.co.ajk.struts.actions.maintenance.FeedbackMaintenanceAction" 
+                validate="true" 
+                parameter="exec" 
+                input=".showPendingFeedback"
+                scope="session"
+                name="feedbackMaintenanceForm">     
+            <forward name="showPendingFeedback"             path=".showPendingFeedback"/>
+            <forward name="showApprovedFeedback"            path=".showApprovedFeedback"/>
+            <forward name="showVisitors"                    path=".showVisitors"/>
+        </action>                
+        
+        <action path="/admin/aboutMaintenanceAction" 
+                type="za.co.ajk.struts.actions.maintenance.AboutMaintenanceAction" 
+                validate="true" 
+                parameter="exec" 
+                input=".showEditUpdateAbout"
+                scope="session"
+                name="aboutForm">     
+            <forward name="showEditUpdateAbout"             path=".showEditUpdateAbout"/>
+        </action>      
+        
+        <action path="/admin/CategoryLookupAction"
+                type="za.co.ajk.struts.actions.maintenance.CategoryCodeLookupAction"
+                name="codeLookupForm"
+                scope="request">
+        </action>
+        <action path="/admin/GalleryLookupAction"
+                type="za.co.ajk.struts.actions.maintenance.GalleryCodeLookupAction"
+                name="codeLookupForm"
+                scope="request">
+        </action>        
+        
+        <action path="/admin/configurationAndSetupAction" 
+                type="za.co.ajk.struts.actions.maintenance.ConfigurationAndSetupAction" 
+                validate="false" 
+                parameter="exec" 
+                input=".showConfigurationAndSetup"
+                scope="request"
+                name="configurationAndSetupForm">     
+            <forward name="showConfigurationAndSetup"             path=".showConfigurationAndSetup"/>
+            <forward name="showAddStylesheet"                       path=".showAddStylesheet"/>
+            <forward name="displayPropList"                         path=".displayPropList"/>
+            <forward name="displayPropEdit"                         path=".displayPropEdit"/>
+        </action>         
+    </action-mappings>
+    
+    
+    <!-- NOTE: No maximum filesize limit specified here as it is handled in the ImageForm valdiation method -->
+    <controller processorClass="org.apache.struts.tiles.TilesRequestProcessor"
+                nocache="false"/>
+    
+    <message-resources parameter="za/co/ajk/struts/ApplicationResource"/>    
+    
+    <!-- ========================= Tiles plugin ===============================-->
+
+    <plug-in className="org.apache.struts.tiles.TilesPlugin" >
+        <set-property property="definitions-config" value="/WEB-INF/tiles-defs.xml" />      
+        <set-property property="moduleAware" value="true" />
+    </plug-in>
+    
+    <!-- ========================= Validator plugin ================================= -->
+    <plug-in className="org.apache.struts.validator.ValidatorPlugIn">
+        <set-property
+            property="pathnames"
+            value="/WEB-INF/validator-rules.xml,/WEB-INF/validation.xml"/>
+    </plug-in>
+    
+</struts-config>

@@ -1,0 +1,72 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+    
+<hibernate-mapping>
+<!-- 
+    Created by the Middlegen Hibernate plugin 2.2
+
+    http://boss.bekk.no/boss/middlegen/
+    http://www.hibernate.org/
+-->
+
+<class 
+    name="za.co.ajk.persistance.transferobjects.Packages" 
+    table="packages"
+    lazy="false"
+>
+
+    <id
+        name="packageId"
+        type="java.lang.Long"
+        column="package_id"
+    >
+		    <meta attribute="field-description" inherit="false">
+		       auto_increment
+		    </meta>
+    
+        <generator class="native" />
+    </id>
+
+    <property
+        name="packageName"
+        type="java.lang.String"
+        column="package_name"
+        not-null="true"
+        length="255"
+    />
+    <property
+        name="whatIDo"
+        type="java.lang.String"
+        column="what_i_do"
+        not-null="true"
+        length="1024"
+    />
+    <property
+        name="whatYouDo"
+        type="java.lang.String"
+        column="what_you_do"
+        not-null="true"
+        length="1024"
+    />
+    <property
+        name="whatYouGet"
+        type="java.lang.String"
+        column="what_you_get"
+        not-null="true"
+        length="1024"
+    />
+    <property
+        name="cost"
+        type="java.math.BigDecimal"
+        column="cost"
+        not-null="true"
+        length="10"
+    />
+
+    <!-- Associations -->
+  
+
+</class>
+</hibernate-mapping>

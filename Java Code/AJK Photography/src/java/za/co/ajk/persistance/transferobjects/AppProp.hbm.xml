@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+    
+<hibernate-mapping>
+<!-- 
+    Created by the Middlegen Hibernate plugin 2.2
+
+    http://boss.bekk.no/boss/middlegen/
+    http://www.hibernate.org/
+-->
+
+<class 
+    name="za.co.ajk.persistance.transferobjects.AppProp" 
+    table="system_properties"
+    lazy="false"
+>
+
+    <id
+        name="propertyKey"
+        type="java.lang.String"
+        column="property_key"
+    >
+    
+        <generator class="assigned" />
+    </id>
+
+    <property
+        name="propertyValueDefault"
+        type="java.lang.String"
+        column="property_value_default"
+        not-null="true"
+        length="255"
+    />
+    <property
+        name="propertyValue"
+        type="java.lang.String"
+        column="property_value"
+        length="255"
+    />
+
+    <!-- Associations -->
+  
+
+</class>
+</hibernate-mapping>

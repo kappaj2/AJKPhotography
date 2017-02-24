@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+    
+<hibernate-mapping>
+<!-- 
+    Created by the Middlegen Hibernate plugin 2.2
+
+    http://boss.bekk.no/boss/middlegen/
+    http://www.hibernate.org/
+-->
+
+<class 
+    name="za.co.ajk.persistance.transferobjects.HitCounter" 
+    table="hit_counter"
+    lazy="false"
+>
+
+    <id
+        name="id"
+        type="java.lang.Long"
+        column="id"
+    >
+		    <meta attribute="field-description" inherit="false">
+		       auto_increment
+		    </meta>
+    
+        <generator class="assigned" />
+    </id>
+
+    <property
+        name="hitTime"
+        type="java.sql.Timestamp"
+        column="hit_time"
+        length="19"
+    />
+    <property
+        name="hitAction"
+        type="java.lang.String"
+        column="hit_action"
+        not-null="true"
+        length="255"
+    />
+    <property
+        name="hitLangCode"
+        type="java.lang.String"
+        column="hit_lang_code"
+        length="5"
+    />
+    <property
+        name="hitTypeCode"
+        type="java.lang.String"
+        column="hit_type_code"
+        length="10"
+    />
+
+    <!-- Associations -->
+  
+
+</class>
+</hibernate-mapping>

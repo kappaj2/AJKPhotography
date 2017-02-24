@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<!--
+    TODO define vocabulary indentification
+    PUBLIC ID: -//vendor//vocabulary//EN
+    SYSTEM ID: http://server/path/factories.dtd
+
+--><!--
+    An example how to use this DTD from your XML document:
+
+    <?xml version="1.0"?>
+
+    <!DOCTYPE factories SYSTEM "factories.dtd">
+
+    <factories>
+    ...
+    </factories>
+-->
+
+<!--- Put your DTDDoc comment here. -->
+<!ELEMENT factories (factory)*>
+
+<!--- Put your DTDDoc comment here. -->
+<!ELEMENT factory (dao)*>
+<!ATTLIST factory
+    failSafe CDATA #IMPLIED
+    class CDATA #IMPLIED
+    name CDATA #IMPLIED
+  >
+
+<!--- Put your DTDDoc comment here. -->
+<!ELEMENT dao (dto)*>
+<!ATTLIST dao
+    name CDATA #IMPLIED
+    class CDATA #IMPLIED
+  >
+
+<!--- Put your DTDDoc comment here. -->
+<!ELEMENT dto EMPTY>
+<!ATTLIST dto
+    name CDATA #IMPLIED
+    class CDATA #IMPLIED
+  >

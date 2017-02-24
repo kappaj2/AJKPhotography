@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans default-autowire="no" default-lazy-init="false" default-dependency-check="none">
+    
+    <!-- Production EJB's follow here -->
+    
+    <bean id = "HFTimerEJB" 
+          class = "org.springframework.ejb.access.SimpleRemoteStatelessSessionProxyFactoryBean">
+        <property name="jndiName" value="HFTimerEJB"/>
+        <property name="businessInterface" 
+                  value="za.co.hf.ejb.timer.HFTimerRemote"/>
+    </bean>
+    
+    
+    <bean id = "HFEmailEJB" 
+          class = "org.springframework.ejb.access.SimpleRemoteStatelessSessionProxyFactoryBean">
+        <property name="jndiName" value="HFEmailEJB"/>
+        <property name="businessInterface" 
+                  value="za.co.hf.ejb.HFEmailRemote"/>
+    </bean>    
+    
+    <!-- Local EJB Method invocation  - still needs to be sorted out -->
+    <!--
+    <bean id = "IstayFacilityEJB" class = "org.springframework.ejb.access.LocalStatelessSessionProxyFactoryBean">
+        <property name="jndiName" value="local/IstayFacilityEJB"/>
+        <property name="businessInterface" value="com.istaycentral.ejb.persistance.facility.IstayFacilityEJBLocal"/>
+    </bean>
+    -->
+    
+    
+    
+    <!-- ********************************  Services  ****************************************** -->	
+    <!-- Production services follows here -->
+
+    <bean id="HFDocumentManagementService" 
+          class="za.co.hf.services.HFDocumentManagementService" singleton="false"/>
+    
+    <bean id="HFEmailService" 
+          class="za.co.hf.services.HFEmailService" singleton="false"/>
+       
+    <bean id="SendNewMailService" 
+          class="za.co.hf.email.SendNewMail" singleton="false"/>     
+          
+    <!-- ********************************  Components ****************************************** -->		
+    
+</beans>

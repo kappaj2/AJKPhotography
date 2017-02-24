@@ -1,0 +1,74 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+    
+<hibernate-mapping>
+<!-- 
+    Created by the Middlegen Hibernate plugin 2.2
+
+    http://boss.bekk.no/boss/middlegen/
+    http://www.hibernate.org/
+-->
+
+<class 
+    name="za.co.ajk.persistance.transferobjects.OnlineDocument" 
+    table="online_documents"
+    lazy="false"
+>
+
+    <id
+        name="documentName"
+        type="java.lang.String"
+        column="document_name"
+    >
+    
+        <generator class="native" />
+    </id>
+
+    <property
+        name="documentType"
+        type="java.lang.String"
+        column="document_type"
+        not-null="true"
+        length="45"
+    />
+    <property
+        name="mimeType"
+        type="java.lang.String"
+        column="mime_type"
+        not-null="true"
+        length="255"
+    />
+    <property
+        name="fileSize"
+        type="java.lang.String"
+        column="file_size"
+        not-null="true"
+        length="16277215"
+    />
+    <property
+        name="documentUrl"
+        type="java.lang.String"
+        column="document_url"
+        not-null="true"
+        length="128"
+    />
+    <property
+        name="shortDescription"
+        type="java.lang.String"
+        column="short_description"
+        length="1024"
+    />
+    <property
+        name="documentData"
+        type="binary"
+        column="document_data"
+        length="2147483647"
+    />
+
+    <!-- Associations -->
+  
+
+</class>
+</hibernate-mapping>
